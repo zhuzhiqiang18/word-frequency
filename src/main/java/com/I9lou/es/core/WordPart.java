@@ -10,7 +10,7 @@ public class WordPart {
     private StringReader textReader;
     private Map<String,WordCounter> words = new HashMap<>();
     //所有分词个数
-    private long allWordCount=0;
+    private long allWordCount;
 
 
 
