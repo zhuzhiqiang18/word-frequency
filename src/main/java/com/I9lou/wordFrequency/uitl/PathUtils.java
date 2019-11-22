@@ -1,4 +1,4 @@
-package com.I9lou.es.uitl;
+package com.I9lou.wordFrequency.uitl;
 
 import java.net.URI;
 import java.nio.file.FileSystem;

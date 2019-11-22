@@ -25,7 +25,7 @@
  */
 package org.wltea.analyzer.dic;
 
-import com.I9lou.es.uitl.PathUtils;
+import com.I9lou.wordFrequency.uitl.PathUtils;
 import org.apache.logging.log4j.Logger;
 import org.wltea.analyzer.cfg.Configuration;
 import org.wltea.analyzer.help.ESPluginLoggerFactory;
@@ -98,15 +98,11 @@ public class Dictionary {
 		try {
 			conf_dir = cfg.getConfigInPluginDir();
 			configFile = conf_dir.resolve(FILE_NAME);
-		} catch (URISyntaxException e) {
+			input = new FileInputStream(configFile.toFile());
+		} catch (URISyntaxException | FileNotFoundException e) {
+			// We should report origin exception
+			logger.error("ik-analyzer", e);
 
-			try {
-				logger.info("try load config from {}", configFile);
-				input = new FileInputStream(configFile.toFile());
-			} catch (FileNotFoundException ex) {
-				// We should report origin exception
-				logger.error("ik-analyzer", e);
-			}
 		}
 		if (input != null) {
 			try {

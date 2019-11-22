@@ -1,20 +1,20 @@
-package com.I9lou.es.core;
+package com.I9lou.wordFrequency.core;
 
 import java.util.Objects;
 
-//´ÊÓï¼ÆÊıÆ÷
-public class WordCounter implements Comparable<WordCounter>{
+//è¯è¯­è®¡æ•°å™¨
+public class WordCounter{
 
-    //´ÊÓï¸öÊı
+    //è¯è¯­ä¸ªæ•°
     private int count;
 
-    //´ÊÓïÀàĞÍ
+    //è¯è¯­ç±»å‹
     private int type;
 
-    //´ÊÓï
+    //è¯è¯­
     private String word;
 
-    //´ÊÓï³¤¶È
+    //è¯è¯­é•¿åº¦
     private int length;
 
     public int getCount() {
@@ -27,7 +27,7 @@ public class WordCounter implements Comparable<WordCounter>{
 
 
     /**
-     * ×ÔÔö
+     * è‡ªå¢
      * @return
      */
     public WordCounter increaseCount(){
@@ -60,15 +60,6 @@ public class WordCounter implements Comparable<WordCounter>{
         this.type = type;
         this.word = word;
         this.length = word.length();
-    }
-
-
-    @Override
-    public int compareTo(WordCounter o) {
-        if(this.count >= o.getCount()){
-            return 1;
-        }
-        return 0;
     }
 
 
