@@ -20,9 +20,9 @@ Configuration configuration = new Configuration();
         System.out.println("总分词量："+wordPart.getAllWordCount());
         System.out.println("去重总词量: "+wordPart.getDistinctWordCount());
         System.out.println("===========词频量TOP5========");
-        List<WordCounter> wordCounterList = wordPart.getSortsWordCounter();
-        for (int i=0;i<(wordCounterList.size()>=5?5:wordCounterList.size());i++){
-            System.out.println("词语："+wordCounterList.get(i).getWord()+" , 词频："+wordCounterList.get(i).getCount()+" , 词频率："+(wordCounterList.get(i).getCount()*0.1/wordPart.getAllWordCount()*100)+"%");
+        List<WordCounter> termCounterList = wordPart.getSortsWordCounter();
+        for (int i=0;i<(termCounterList.size()>=5?5:termCounterList.size());i++){
+            System.out.println("词语："+termCounterList.get(i).getWord()+" , 词频："+termCounterList.get(i).getCount()+" , 词频率："+(termCounterList.get(i).getCount()*0.1/wordPart.getAllWordCount()*100)+"%");
         }
         System.out.println("===========分词========");
         

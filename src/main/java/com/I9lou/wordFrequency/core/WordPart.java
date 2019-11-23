@@ -10,7 +10,7 @@ public class WordPart {
     private String text;
     private StringReader textReader;
     //分词链
-    private Map<String,WordCounter> words ;
+    private Map<String, TermCounter> words ;
 
     //所有分词个数
     private long allWordCount;
@@ -51,11 +51,11 @@ public class WordPart {
         }
     }
 
-    public void addWordCounter(WordCounter wordCounter){
+    public void addWordCounter(TermCounter termCounter){
         allWordCount+=1;
-        WordCounter wc = words.get(wordCounter.getWord());
+        TermCounter wc = words.get(termCounter.getWord());
         if(wc==null){
-            words.put(wordCounter.getWord(),wordCounter.increaseCount());
+            words.put(termCounter.getWord(), termCounter.increaseCount());
         }else{
             wc.increaseCount();
         }
@@ -69,11 +69,11 @@ public class WordPart {
      * 排序
      * @return
      */
-    public List<WordCounter> getSortsWordCounter() {
-        List<WordCounter>  wordCounterList = new ArrayList<>(words.values());
-        Collections.sort(wordCounterList, new Comparator<WordCounter>() {
+    public List<TermCounter> getSortsWordCounter() {
+        List<TermCounter> termCounterList = new ArrayList<>(words.values());
+        Collections.sort(termCounterList, new Comparator<TermCounter>() {
             @Override
-            public int compare(WordCounter w1, WordCounter w2) {
+            public int compare(TermCounter w1, TermCounter w2) {
                 if(w1.getCount()>=w2.getCount()){
                     return -1;
                 }else {
@@ -81,7 +81,7 @@ public class WordPart {
                 }
             }
         });
-        return wordCounterList;
+        return termCounterList;
     }
 
     //去重分词个数
@@ -100,7 +100,7 @@ public class WordPart {
         return textReader;
     }
 
-    public Map<String, WordCounter> getWords() {
+    public Map<String, TermCounter> getWords() {
         return words;
     }
 
@@ -108,4 +108,5 @@ public class WordPart {
         this.text = text;
         this.textReader = new StringReader(text);
     }
+
 }

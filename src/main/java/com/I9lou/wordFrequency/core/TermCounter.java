@@ -3,7 +3,7 @@ package com.I9lou.wordFrequency.core;
 import java.util.Objects;
 
 //词语计数器
-public class WordCounter{
+public class TermCounter {
 
     //词语个数
     private int count;
@@ -24,7 +24,7 @@ public class WordCounter{
     private int firstBegin;
 
 
-    public WordCounter(int type, String word,int offset,int begin,int length) {
+    public TermCounter(int type, String word, int offset, int begin, int length) {
         this.type = type;
         this.word = word;
         this.length = length;
@@ -37,7 +37,7 @@ public class WordCounter{
      * 自增
      * @return
      */
-    public WordCounter increaseCount(){
+    public TermCounter increaseCount(){
         this.count=count+1;
         return this;
     }
@@ -48,7 +48,7 @@ public class WordCounter{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WordCounter that = (WordCounter) o;
+        TermCounter that = (TermCounter) o;
         return Objects.equals(word, that.word);
     }
 
@@ -85,4 +85,23 @@ public class WordCounter{
         return length;
     }
 
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getFirstOffset() {
+        return firstOffset;
+    }
+
+    public void setFirstOffset(int firstOffset) {
+        this.firstOffset = firstOffset;
+    }
+
+    public int getFirstBegin() {
+        return firstBegin;
+    }
+
+    public void setFirstBegin(int firstBegin) {
+        this.firstBegin = firstBegin;
+    }
 }

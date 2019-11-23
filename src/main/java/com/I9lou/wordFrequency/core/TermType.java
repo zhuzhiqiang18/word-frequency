@@ -5,7 +5,7 @@ package com.I9lou.wordFrequency.core;
  * @author zzq
  * @date 2019-11-23 10:29
  */
-public enum WordType {
+public enum TermType {
 
     //未知
     TYPE_UNKNOWN(0),
@@ -29,7 +29,7 @@ public enum WordType {
     TYPE_CQUAN(48);
 
     private int type;
-    WordType(int type){
+    TermType(int type){
         this.type = type;
     }
 
@@ -42,35 +42,35 @@ public enum WordType {
         this.type = type;
     }
 
-    public static WordType getWordType(int type){
-        WordType wt = WordType.TYPE_UNKNOWN;
+    public static TermType getWordType(int type){
+        TermType wt = TermType.TYPE_UNKNOWN;
         switch (type){
             case 1:
-                wt = WordType.TYPE_ENGLISH;
+                wt = TermType.TYPE_ENGLISH;
                 break;
             case 2:
-                wt = WordType.TYPE_ARABIC;
+                wt = TermType.TYPE_ARABIC;
                 break;
             case 3:
-                wt = WordType.TYPE_LETTER;
+                wt = TermType.TYPE_LETTER;
                 break;
             case 4:
-                wt = WordType.TYPE_CNWORD;
+                wt = TermType.TYPE_CNWORD;
                 break;
             case 64:
-                wt = WordType.TYPE_CNCHAR;
+                wt = TermType.TYPE_CNCHAR;
                 break;
             case 8:
-                wt = WordType.TYPE_OTHER_CJK;
+                wt = TermType.TYPE_OTHER_CJK;
                 break;
             case 16:
-                wt = WordType.TYPE_CNUM;
+                wt = TermType.TYPE_CNUM;
                 break;
             case 32:
-                wt = WordType.TYPE_COUNT;
+                wt = TermType.TYPE_COUNT;
                 break;
             case 48:
-                wt = WordType.TYPE_CQUAN;
+                wt = TermType.TYPE_CQUAN;
                 break;
 
         }
