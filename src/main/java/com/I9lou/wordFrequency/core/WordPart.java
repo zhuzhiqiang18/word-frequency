@@ -74,8 +74,10 @@ public class WordPart {
         Collections.sort(termCounterList, new Comparator<TermCounter>() {
             @Override
             public int compare(TermCounter w1, TermCounter w2) {
-                if(w1.getCount()>=w2.getCount()){
+                if(w1.getCount()>w2.getCount()){
                     return -1;
+                }else if(w1.getCount()==w2.getCount()){
+                    return 0;
                 }else {
                     return 1;
                 }

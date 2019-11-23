@@ -39,7 +39,10 @@ public class AssemblyTerm {
                       if( termCounter.getFirstBegin() - begin ==1){
                           word+=termCounter.getWord();
                           begin = termCounter.getFirstBegin();
-                          if(i==termCounters.size()-1){
+                          if(i==termCounters.size()-1 ||
+                                  (termCounters.get(i+1).getLength()>1 &&
+                                          (termCounters.get(i+1).getType() == TermType.TYPE_CNCHAR.getType() ||
+                                                  termCounters.get(i+1).getType() == TermType.TYPE_CNWORD.getType()))  ){
                               add(word);
                           }
                       }else {//新词
