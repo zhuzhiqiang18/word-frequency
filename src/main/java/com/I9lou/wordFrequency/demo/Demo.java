@@ -4,6 +4,7 @@ import com.I9lou.wordFrequency.core.Configuration;
 import com.I9lou.wordFrequency.core.TermCounter;
 import com.I9lou.wordFrequency.core.WordPart;
 import com.I9lou.wordFrequency.core.TermType;
+import com.I9lou.wordFrequency.learning.AssemblyTerm;
 import com.I9lou.wordFrequency.service.FrequencySevice;
 import com.I9lou.wordFrequency.service.impl.IKFrequencySeviceImpl;
 import org.wltea.analyzer.cfg.IKConfiguration;
@@ -24,7 +25,8 @@ public class Demo {
         frequencySevice.init(configuration);
         //加载初始化
         WordPart wordPart = new WordPart(true);
-        wordPart.setText("10月21日，杭州保俶塔的保养维护工程正式开工。今天，西湖风景名胜区管委会发布消息，经过多方专家登塔勘察，造成保俶塔塔刹顶部倾斜的原因终于找到了！");
+        //wordPart.setText("10月21日，杭州保俶塔的保养维护工程正式开工。今天，西湖风景名胜区管委会发布消息，经过多方专家登塔勘察，造成保俶塔塔刹顶部倾斜的原因终于找到了！");
+        wordPart.setText("保俶塔倾斜");
         frequencySevice.processTerm(wordPart);
         System.out.println("段落："+wordPart.getText());
         System.out.println("总分词量："+wordPart.getAllWordCount());
@@ -45,9 +47,13 @@ public class Demo {
             System.out.print(w+" ");
         }
 
-        /*System.out.println( );
+        System.out.println();
+        System.out.println("===============================");
         AssemblyTerm assemblyTerm = new AssemblyTerm(termCounterList);
-        assemblyTerm.reLoad();*/
+        assemblyTerm.reLoad();
+        for (String s : assemblyTerm.getWordList()){
+            System.out.print(s+" ");
+        }
 
        }
 
