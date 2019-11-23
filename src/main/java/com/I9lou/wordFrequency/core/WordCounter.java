@@ -17,14 +17,21 @@ public class WordCounter{
     //词语长度
     private int length;
 
-    public int getCount() {
-        return count;
-    }
+    //偏移量
+    private int firstOffset;
 
-    public void setCount(int count) {
-        this.count = count;
-    }
+    //第一次出现开始位置
+    private int firstBegin;
 
+
+    public WordCounter(int type, String word,int offset,int begin,int length) {
+        this.type = type;
+        this.word = word;
+        this.length = length;
+        this.firstBegin = begin;
+        this.firstOffset = offset;
+
+    }
 
     /**
      * 自增
@@ -33,6 +40,29 @@ public class WordCounter{
     public WordCounter increaseCount(){
         this.count=count+1;
         return this;
+    }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WordCounter that = (WordCounter) o;
+        return Objects.equals(word, that.word);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(word);
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public int getType() {
@@ -55,24 +85,4 @@ public class WordCounter{
         return length;
     }
 
-    public WordCounter(int count, int type, String word) {
-        this.count = count;
-        this.type = type;
-        this.word = word;
-        this.length = word.length();
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        WordCounter that = (WordCounter) o;
-        return Objects.equals(word, that.word);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(word);
-    }
 }

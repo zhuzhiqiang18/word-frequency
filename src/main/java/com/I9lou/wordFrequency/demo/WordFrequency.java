@@ -27,7 +27,7 @@ public class WordFrequency {
         //WordPart wordPart = new WordPart("保俶塔的保俶塔保俶塔保俶塔");
         ik.reset(wordPart.getTextReader());
         while((lexeme = ik.next())!=null){
-            wordPart.addWordCounter(new WordCounter(0,lexeme.getLexemeType(),lexeme.getLexemeText()));
+            wordPart.addWordCounter(new WordCounter(lexeme.getLexemeType(),lexeme.getLexemeText(),lexeme.getOffset(),lexeme.getBegin(),lexeme.getLength()));
         }
         System.out.println("段落："+wordPart.getText());
         System.out.println("总分词量："+wordPart.getAllWordCount());
