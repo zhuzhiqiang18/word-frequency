@@ -5,8 +5,6 @@ import java.util.*;
 
 //被分析的文字段落
 public class WordPart {
-    private static final String COUNT="count";
-    private static final String WORD="word";
     private String text;
     private StringReader textReader;
     //分词链
