@@ -9,13 +9,10 @@ public class WordPart {
     private StringReader textReader;
     //分词链
     private Map<String, TermCounter> words ;
-
     //所有分词个数
     private long allWordCount;
-
-    //分词是否保持有序 默认无须
+    //分词是否保持有序 默认无序
     private boolean wordsOrder;
-
 
 
     public WordPart(String text){
@@ -24,13 +21,11 @@ public class WordPart {
         init();
     }
 
-
     public WordPart(String text,boolean wordsOrder){
         this(text);
         this.wordsOrder = wordsOrder;
         init();
     }
-
 
     /**
      * 是否开启顺序分词
@@ -41,6 +36,9 @@ public class WordPart {
         init();
     }
 
+    /**
+     * 分词链是否保持有序
+     */
     private void init(){
         if(wordsOrder){
             words = new LinkedHashMap<>(16 , 0.95f);
@@ -49,7 +47,11 @@ public class WordPart {
         }
     }
 
-    public void addWordCounter(TermCounter termCounter){
+    /**
+     * 添加分词计数器
+     * @param termCounter
+     */
+    public void addTermCounter(TermCounter termCounter){
         allWordCount+=1;
         TermCounter wc = words.get(termCounter.getWord());
         if(wc==null){
@@ -67,7 +69,7 @@ public class WordPart {
      * 排序
      * @return
      */
-    public List<TermCounter> getSortsWordCounter() {
+    public List<TermCounter> getSortsTermCounter() {
         List<TermCounter> termCounterList = new ArrayList<>(words.values());
         Collections.sort(termCounterList, new Comparator<TermCounter>() {
             @Override
@@ -83,7 +85,7 @@ public class WordPart {
     }
 
     //去重分词个数
-    public long getDistinctWordCount() {
+    public long getDistinctTermCount() {
         return words.size();
     }
 

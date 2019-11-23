@@ -24,7 +24,7 @@
  */
 package org.wltea.analyzer.core;
 
-import org.wltea.analyzer.cfg.Configuration;
+import org.wltea.analyzer.cfg.IKConfiguration;
 import org.wltea.analyzer.dic.Dictionary;
 
 import java.io.IOException;
@@ -70,10 +70,10 @@ class AnalyzeContext {
     //最终分词结果集
     private LinkedList<Lexeme> results;
 	//分词器配置项
-	private Configuration cfg;
+	private IKConfiguration cfg;
 
-    public AnalyzeContext(Configuration configuration){
-        this.cfg = configuration;
+    public AnalyzeContext(IKConfiguration IKConfiguration){
+        this.cfg = IKConfiguration;
     	this.segmentBuff = new char[BUFF_SIZE];
     	this.charTypes = new int[BUFF_SIZE];
     	this.buffLocker = new HashSet<String>();

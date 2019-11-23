@@ -23,7 +23,7 @@
  */
 package org.wltea.analyzer.core;
 
-import org.wltea.analyzer.cfg.Configuration;
+import org.wltea.analyzer.cfg.IKConfiguration;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -44,16 +44,16 @@ public final class IKSegmenter {
 	private List<ISegmenter> segmenters;
 	//分词歧义裁决器
 	private IKArbitrator arbitrator;
-    private  Configuration configuration;
+    private IKConfiguration IKConfiguration;
 
 
 	/**
 	 * IK分词器构造函数
 	 * @param input
      */
-	public IKSegmenter(Reader input , Configuration configuration){
+	public IKSegmenter(Reader input , IKConfiguration configuration){
 		this.input = input;
-        this.configuration = configuration;
+        this.IKConfiguration = configuration;
         this.init();
 	}
 
@@ -63,7 +63,7 @@ public final class IKSegmenter {
 	 */
 	private void init(){
 		//初始化分词上下文
-		this.context = new AnalyzeContext(configuration);
+		this.context = new AnalyzeContext(IKConfiguration);
 		//加载子分词器
 		this.segmenters = this.loadSegmenters();
 		//加载歧义裁决器
@@ -124,7 +124,7 @@ public final class IKSegmenter {
 				}
 			}
 			//对分词进行歧义处理
-			this.arbitrator.process(context, configuration.isUseSmart());
+			this.arbitrator.process(context, IKConfiguration.isUseSmart());
 			//将分词结果输出到结果集，并处理未切分的单个CJK字符
 			context.outputToResult();
 			//记录本次分词的缓冲区位移

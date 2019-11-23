@@ -27,7 +27,7 @@ package org.wltea.analyzer.dic;
 
 import com.I9lou.wordFrequency.uitl.PathUtils;
 import org.apache.logging.log4j.Logger;
-import org.wltea.analyzer.cfg.Configuration;
+import org.wltea.analyzer.cfg.IKConfiguration;
 import org.wltea.analyzer.help.ESPluginLoggerFactory;
 
 import java.io.*;
@@ -64,7 +64,7 @@ public class Dictionary {
 	/**
 	 * 配置对象
 	 */
-	private Configuration configuration;
+	private IKConfiguration IKConfiguration;
 
 	private static final Logger logger = ESPluginLoggerFactory.getLogger(Dictionary.class.getName());
 
@@ -88,8 +88,8 @@ public class Dictionary {
 	private Path conf_dir;
 	private Properties props;
 
-	private Dictionary(Configuration cfg) {
-		this.configuration = cfg;
+	private Dictionary(IKConfiguration cfg) {
+		this.IKConfiguration = cfg;
 		this.props = new Properties();
 		this.conf_dir = null;
 		Path configFile = null;
@@ -125,7 +125,7 @@ public class Dictionary {
 	 * 
 	 * @return Dictionary
 	 */
-	public static synchronized void initial(Configuration cfg) {
+	public static synchronized void initial(IKConfiguration cfg) {
 		if (singleton == null) {
 			synchronized (Dictionary.class) {
 				if (singleton == null) {
@@ -443,8 +443,8 @@ public class Dictionary {
 	void reLoadMainDict() {
 		logger.info("重新加载词典...");
 		// 新开一个实例加载词典，减少加载过程对当前词典使用的影响
-		Dictionary tmpDict = new Dictionary(configuration);
-		tmpDict.configuration = getSingleton().configuration;
+		Dictionary tmpDict = new Dictionary(IKConfiguration);
+		tmpDict.IKConfiguration = getSingleton().IKConfiguration;
 		tmpDict.loadMainDict();
 		tmpDict.loadStopWordDict();
 		_MainDict = tmpDict._MainDict;
