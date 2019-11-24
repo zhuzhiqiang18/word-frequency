@@ -96,8 +96,8 @@ public class WordPart {
     }
 
     public StringReader getTextReader() {
-        if(text==null||text.length()==0){
-            throw new  RuntimeException("请设置文字段落,method:setText()");
+        if(text==null || text.length()==0 || this.textReader==null){
+            throw new  RuntimeException("text or textReader is null！");
         }
         return textReader;
     }
@@ -111,4 +111,8 @@ public class WordPart {
         this.textReader = new StringReader(text);
     }
 
+
+    public void setTextReader(StringReader textReader) {
+        this.textReader = textReader;
+    }
 }
