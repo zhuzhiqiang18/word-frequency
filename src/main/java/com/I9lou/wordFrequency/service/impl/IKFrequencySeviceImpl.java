@@ -1,6 +1,5 @@
 package com.I9lou.wordFrequency.service.impl;
 
-import com.I9lou.wordFrequency.core.Configuration;
 import com.I9lou.wordFrequency.core.TermCounter;
 import com.I9lou.wordFrequency.core.WordPart;
 import com.I9lou.wordFrequency.service.FrequencySevice;
@@ -17,14 +16,15 @@ import java.io.StringReader;
  * @date 2019-11-23 15:22
  */
 public class IKFrequencySeviceImpl implements FrequencySevice {
-    private IKConfiguration ikConfiguration;
     private  IKSegmenter ik;
-    @Override
-    public void init(Configuration configuration) {
-        this.ikConfiguration= (IKConfiguration) configuration;
+    private IKConfiguration ikConfiguration;
+
+    public IKFrequencySeviceImpl(IKConfiguration ikConfiguration){
+        this.ikConfiguration = ikConfiguration;
         ikConfiguration.setUseSmart(true);
         ik = new IKSegmenter(new StringReader(""), ikConfiguration);
     }
+
 
     @Override
     public void processTerm(WordPart wordPart) throws IOException {
@@ -34,4 +34,6 @@ public class IKFrequencySeviceImpl implements FrequencySevice {
             wordPart.addTermCounter(new TermCounter(lexeme.getLexemeType(),lexeme.getLexemeText(),lexeme.getOffset(),lexeme.getBegin(),lexeme.getLength()));
         }
     }
+
+
 }
