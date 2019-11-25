@@ -29,7 +29,7 @@ public class SpringDemo {
         for (int i = 0; i<(termCounterList.size()>=10?10: termCounterList.size()); i++){
             System.out.println("词语："+ termCounterList.get(i).getWord()+" , " +
                     "词频："+ termCounterList.get(i).getCount()+" , " +
-                    "词频率："+(termCounterList.get(i).getCount()*0.1/wordPart.getAllWordCount()*100)+"% , " +
+                    "词频率："+(termCounterList.get(i).getCount()*1.0/wordPart.getAllWordCount()*100)+"% , " +
                     "出现位置："+ termCounterList.get(i).getFirstBegin()+" , " +
                     "词元类型： "+ TermType.getWordType(termCounterList.get(i).getType()).name()
             );
