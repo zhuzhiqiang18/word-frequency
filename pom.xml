@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <version.spring>3.2.16.RELEASE</version.spring>
+        <version.spring>5.3.19</version.spring>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
